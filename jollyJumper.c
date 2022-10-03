@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "jollyjumper.h"
 #include <stdbool.h>
-//#include <malloc.h>
+#include <malloc.h>
 
 
 
@@ -47,17 +47,17 @@ int isJollyJumber(const int seq[], int size)
 
 int main()
 {
-    int size = 4;
-    int seq[4] = {1, 4, 2, 3};
+    int size;
+    int seq[size];
 
-    //printf("\nInput size:\n> ");    // Getting our size
-    //scanf("%d", &size);
+    printf("\nInput size:\n> ");    // Getting our size
+    scanf("%d", &size);
 
-    //printf("Input sequence:\n> ");  // Getting our sequence 
-    //for(int i = 0; i < size; i++)
-    //{
-      //scanf("%d", &seq[i]);
-    //}
+    printf("Input sequence:\n> ");  // Getting our sequence 
+    for(int i = 0; i < size; i++)
+    {
+      scanf("%d", &seq[i]);
+    }
 
     /* Calling our function and using a if-else statement */
     if(isJollyJumber(seq, size))
