@@ -1,56 +1,41 @@
-/* Week 5, exercise 6 */
-#include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include "circle.h"
 
-// Point struct
-typedef struct
-{
-	int x;	// x-coordinate
-	int y;	// y-coordinate 
-} point; 
 
-// Circle struct
-typedef struct
+void fiveCircles(struct circle c[]) 
 {
-	point p; 	// our center-coordinate
-	int r: 		// radius 
-} circle;
-/* Postcondition: A C struct that represents a circle*/
-
-
-void fiveCircles(int c[]) 
-{
+/*post: returns an array with five struct circles - solution to 6.b*/
 // 	Making a for-loop to make the 5 cirlces
 	for(int i = 0; i < 5; i++)
 	{
-		c[].p.x = i;	// Our first i in (i,i)
-		c[].p.y = i;	// Our second i in (i,i)
-		c[].r = i;		// Our radius of the circle
+		c[i].p.x = i;	// Our first i in (i,i)
+		c[i].p.y = i;	// Our second i in (i,i)
+		c[i].r = i;		// Our radius of the struct circle
 	}
 
 /* Postcondition: Answer to exercise 6.b */
 }
 
-int circleIsValid(const circle * c) 
+int circleIsValid(const struct circle * c)
 {
-//  Checking if our radius is positive, if not; then there's no circle
-	if(c > 0)
-		return 0;
-	else if(c == 0)
+/*post: answer to exercise 6.c*/
+//  Checking if our radius is atleast 1, if not; then there's no circle.
+	if(c->r < 1)
 		return 1;
-	else(c < 0)
-		return 1;
-
-	return 0;
 /* Postcondition: Answer to exercise 6.c */
+	return 0;
 }
 
-void translate(circle* c, const point* p) 
+void translate(struct circle* c, const struct point* p) 
 {
+/*ansver to exercise 6.d */ 
+
 //  Adding two coordinates together
 	c -> p.x + p -> x;
 	c -> p.y + p -> y; 
 
-/* Postcondition nswer to exercise 6.d */
+// Postcondition answer to exercise 6.d */
 }
+
+
+

@@ -1,71 +1,54 @@
-#include <stdio.h>
 #include "jollyjumper.h"
 #include <stdbool.h>
-#include <malloc.h>
+#include <stdlib.h>
 
+int isJollyJumber(const int seq[], int size) {
+/*post: answer to exercise 7.a*/
 
-
-int isJollyJumber(const int seq[], int size) 
-{
-    
-    /* Creating a boolean array, where all values is false as default */
+    // laver en boolean række 
     int exist[size - 1];
+
+    // laver en for-løkke, der der igennem alle være, og sætter
+    // alle værdier som falsk
     for(int i = 0; i < size - 1; i++)
     {
         exist[i] = 0;
     }
 
-    /* For-loop with a nested if-else expression for calculating the differences */
+    // laver et for-løkke, der går igennem alle elementer i rækken
     for(int i = 0; i < size - 1; i++)
     {
+        // laver en variabel t, der kan give forskellen
         int t; 
 
+        // hvis vores værdi 'i' er større end værdien 'i+1'
+        // så udregner vi forskellen
         if(seq[i] > seq[i + 1])
         {
             t = seq[i] - seq[i + 1];
         }
+        // ellers udregner vi forskellen den anden vej
+        // i+1 - i
         else
         {
             t = seq[i + 1] - seq[i];
         }
         
-    /* If our temporary value is over 0, and t is smaller than size, return 'false'*/
+        // hvis vores t er større end 0, og t er mindre en størrelsen
+        // så eksisterer der en jolly jumper
         if(t > 0 && t < size)
             exist[t - 1] =  1;
     }    
     
-    /* Checking if all differences of values is present */
+        // tilsidst tjekker alle hele rækken igen
+        // hvis vi har en værdi, der ikke opfylder vores jolly jumper
+        // så siger vi der ikke eksisterer en jullyjumper
         for(int i = 0; i < size; i++)
         {
             if(exist[i] == 0)
             return 0;
         }
 
-// Postcondition: answer to exercise 7.a 
+// post: svar til 7a
     return 1;
-}
-
-int main()
-{
-    int size;
-    int seq[size];
-
-    printf("\nInput size:\n> ");    // Getting our size
-    scanf("%d", &size);
-
-    printf("Input sequence:\n> ");  // Getting our sequence 
-    for(int i = 0; i < size; i++)
-    {
-      scanf("%d", &seq[i]);
-    }
-
-    /* Calling our function and using a if-else statement */
-    if(isJollyJumber(seq, size))
-    {
-        printf("Jolly");
-    }
-    else
-        printf("Not jolly");
-
-    return 0;
 }
